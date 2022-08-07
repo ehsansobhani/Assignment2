@@ -1,0 +1,32 @@
+﻿@model Assignment2.Models.Advertisement
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Advertisement</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.FileName)*@
+            File Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FileName)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.Url)*@
+            Picture
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AnswerImageId">Edit</a> |
+    <a asp-controller="Brokerages"asp-action="Index">Back to List</a>
+</div>

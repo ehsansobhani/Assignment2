@@ -1,0 +1,98 @@
+﻿@model Assignment2.Models.ViewModels.BrokerageViewModel
+
+@{
+    ViewData["Title"] = "Edit Subscription";
+}
+
+<h1>Subscription(s)</h1>
+
+@if (Model.Brokerages != null)
+{
+    <h3>
+        Subscribers to the client
+    </h3>
+    <table class="table">
+        <tr>
+            @if (Model.Brokerages.Count() > 0)
+            {
+                <th>Registered Brokerages Name for  @Model.Clients.First().FullName</th>
+              
+            }
+            else
+            {
+                <th> No brokerage record exist </th>
+            }
+        </tr>
+       @* @foreach (var item1 in Model.Brokerages)
+        {
+            <tr>
+                <td>
+                     @Html.DisplayFor(modelItem => item1.Title)
+                     
+                     <a asp-action="Unsubscribe" asp-route-id="@Model.Clients.First().ID" asp-route-title="@item1.Title">Unregister</a>
+                      
+                </td>
+                
+            </tr>
+        }
+*@
+
+         
+        
+        
+            <tr>
+                <td>
+                     
+                     Alpha 
+                @if ((from cust in Model.Brokerages where cust.Title.Contains("Alpha") select cust).Count()!=0)
+                {
+                    <a asp-action="Editsubscribe" asp-route-id="@Model.Clients.First().ID" asp-route-title="Alpha" asp-route-functionID= "1" >Unregister</a>
+                }
+                else
+                {
+                    <a asp-action="Editsubscribe" asp-route-id="@Model.Clients.First().ID" asp-route-title="Alpha" asp-route-functionID= "2">register</a> 
+                }
+                      
+                </td>
+                
+            </tr>
+        
+             <tr>
+                <td>
+                     
+                     Beta 
+                @if ((from cust in Model.Brokerages where cust.Title.Contains("Beta") select cust).Count()!=0)
+                {
+                    <a asp-action="Editsubscribe" asp-route-id="@Model.Clients.First().ID" asp-route-title="Beta" asp-route-functionID= "1" >Unregister</a>
+                }
+                else
+                {
+                    <a asp-action="Editsubscribe" asp-route-id="@Model.Clients.First().ID" asp-route-title="Beta" asp-route-functionID= "2">register</a> 
+                }
+                      
+                </td>
+             
+                
+            </tr>
+        
+             <tr>
+                <td>
+                     
+                     Omega 
+                @if ((from cust in Model.Brokerages where cust.Title.Contains("Omega") select cust).Count()!=0)
+                {
+                    <a asp-action="Editsubscribe" asp-route-id="@Model.Clients.First().ID" asp-route-title="Omega" asp-route-functionID= "1" >Unregister</a>
+                }
+                else
+                {
+                    <a asp-action="Editsubscribe" asp-route-id="@Model.Clients.First().ID" asp-route-title="Omega" asp-route-functionID= "2">register</a> 
+                }
+                      
+                </td>
+             
+                
+            </tr>
+        
+    </table>
+    <a asp-action="Index" >Back to List</a>
+}

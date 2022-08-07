@@ -1,0 +1,77 @@
+﻿@model Assignment2.Models.ViewModels.FileInputViewModel
+
+@{
+    ViewData["Title"] = "Advertisements";
+}
+
+<h1>Show ads for brokerage @Model.BrokerageTitle</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id="@Model.BrokerageId">Upload New</a>
+    <br>
+    <br>
+    <a asp-controller="Brokerages" asp-action="Index" >Back to List</a>
+</p>
+<table class="table">
+    <thead>
+       
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(modelItem => item1.)*@
+                File Name
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Url)*@
+                Picture
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    
+       
+
+
+        @if (Model.Advertisements != null)
+{
+    <h3>
+        @*Advertisements to the brokerage*@
+    </h3>
+    <table class="table">
+        <tr>
+            @if (Model.Advertisements.Count() > 0)
+            {
+                <th> Advertisements </th>
+            }
+            else
+            {
+                <th> No client record exist </th>
+            }
+        </tr>
+        @foreach (var item1 in Model.Advertisements)
+        {
+            <tr>
+                <td>
+                     @Html.DisplayFor(modelItem => item1.FileName)
+                    
+                </td>
+                            <td>
+                <img src="@item1.Url" style="max-width: 400px;" />
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item1.AnswerImageId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item1.AnswerImageId">Details</a> |*@
+                <a asp-action="Delete" asp-route-BrokerageTitle="@Model.BrokerageTitle" asp-route-id="@item1.AnswerImageId">Delete</a>
+            </td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+
+
+        
+         
+    
+
